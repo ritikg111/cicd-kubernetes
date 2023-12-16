@@ -1,12 +1,12 @@
 pipeline {
 
     agent any
-/*
+
 	tools {
         maven "MAVEN3"
         jdk "Oraclejdk11"
     }
-*/
+
     environment {
         registry = "ritikgoel/vprofile-app"
         registryCredential = 'dockerhubcreds'

@@ -50,7 +50,7 @@ sh '''${scanner}/bin/sonar-scanner -Dsonar.projectKey=vprofile \
                            -Dsonar.java.checkstyle.reportPaths=target/checkstyle-result.xml'''
 }
 timeout(time: 10, unit: 'MINUTES') {
-                            waitForQualityGate abortPipeline: true
+waitForQualityGate abortPipeline: true
 }
 }
 }
@@ -79,5 +79,16 @@ stage('Remove unused docker images')
   }
   }
 
+stage('Deploy to K8s using Helm')
+{
+agent { 
+  label 'KOPS'
+}
+
+steps{
+
+sh 'helm upgrade --install --force vprofile-stack helm/vprofilecharts --set appimage=${registry}:v${BUILD_NUMBER} --namespace=prod'
+}
+}
 }
 }

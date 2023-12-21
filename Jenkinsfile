@@ -40,7 +40,7 @@ scanner = 'tool soanr4.7'
 }
 steps{
 withSonarQubeEnv('sonar-pro'){
-sh '''${scanner}/bin/sonar-scanner' -Dsonar.projectKey=vprofile \
+sh '''${scanner}/bin/sonar-scanner -Dsonar.projectKey=vprofile \
                            -Dsonar.projectName=vprofile-repo \
                            -Dsonar.projectVersion=1.0 \
                            -Dsonar.sources=src/ \

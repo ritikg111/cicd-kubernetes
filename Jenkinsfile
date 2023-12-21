@@ -57,7 +57,7 @@ timeout(time: 10, unit: 'MINUTES') {
 stage('Docker Build'){
 steps{
   script{
-dockerImage = docker.build('${registry}' + ':v${BUILD_NUMBER}')
+dockerImage = docker.build("${registry}" + ":v${BUILD_NUMBER}")
   }
 }
 }
@@ -65,7 +65,7 @@ dockerImage = docker.build('${registry}' + ':v${BUILD_NUMBER}')
 stage('Push Image to Dockerhub'){
 steps{
   script{
-docker.withRegistry('','${registry_creds}')
+docker.withRegistry('',"${registry_creds}")
 dockerImage.push('latest')
 }
 }

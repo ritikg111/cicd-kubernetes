@@ -36,7 +36,7 @@ sh 'mvn checkstyle:checkstyle'
 stage('Sonarqube Code Analysis'){
 
 environment{
-scanner = 'tool soanr4.7'
+scanner = 'tool sonar4.7'
 }
 steps{
 withSonarQubeEnv('sonar-pro'){

@@ -65,10 +65,10 @@ dockerImage = docker.build("${registry}:v${BUILD_NUMBER}")
 stage('Push Image to Dockerhub'){
 steps{
   script{
-docker.withRegistry('', registrycreds)
+docker.withRegistry('', "{registrycreds}"){
 dockerImage.push("v${BUILD_NUMBER}")
 dockerImage.push('latest')
-    
+}    
 }
 }
 }

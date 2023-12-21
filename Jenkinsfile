@@ -72,6 +72,12 @@ dockerImage.push('latest')
 }
 }
 }
+stage('Remove unused docker images')
+  {
+  steps{
+    sh ' docker rmi "${registry}:v${BUILD_NUMBER}" '
+  }
+  }
 
 }
 }

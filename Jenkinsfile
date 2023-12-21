@@ -56,7 +56,7 @@ timeout(time: 10, unit: 'MINUTES') {
 }
 stage('Docker Build'){
 steps{
-dockerImage = docker.build(${registry}:v${BUILD_NUMBER})
+dockerImage = docker.build('${registry}' + ':v${BUILD_NUMBER}')
 }
 }
 

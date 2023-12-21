@@ -8,7 +8,7 @@ maven 'MAVEN3'
 }
 environment{
 registry = 'ritikgoel/vprofile-app'
-registry_creds = 'dockerhubcreds'
+registrycreds = 'dockerhubcreds'
 
 }
 
@@ -65,7 +65,7 @@ dockerImage = docker.build("${registry}:v${BUILD_NUMBER}")
 stage('Push Image to Dockerhub'){
 steps{
   script{
-docker.withRegistry('',"${registry_creds}")
+docker.withRegistry('',"${registrycreds}")
 dockerImage.push('latest')
 }
 }
